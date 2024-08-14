@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn More | Malforge Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            color: #E0E0E0;
+            overflow-x: hidden;
+            background: url('https://via.placeholder.com') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Dark overlay */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Dark black overlay with transparency */
+            z-index: -1; /* Ensure overlay is behind all other content */
+        }
+
+        h1, h2, h3 {
+            color: #FF5722;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        li::before {
+            content: "➤";
+            color: #FF5722;
+            position: absolute;
+            left: 0;
+        }
+
+        a {
+            color: #FF5722;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #FF8A50;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://via.placeholder.com') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background-attachment: fixed;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            color: #fff;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: rgba(30, 30, 30, 0.9);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .container h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #FF5722;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .container h1::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: #FF5722;
+            animation: expand 0.5s ease-in-out;
+        }
+
+        .container h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+            position: relative;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .container ul {
+            list-style-type: none;
+        }
+
+        .container ul li {
+            font-size: 1.1em;
+            animation: slideIn 0.7s ease-out;
+        }
+
+        /* Parallax Effect */
+        .parallax {
+            background: url('https://via.placeholder.com') no-repeat center center/cover;
+            height: 400px;
+            position: relative;
+            z-index: 1;
+            background-attachment: fixed;
+        }
+
+        /* Sticky Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(30, 30, 30, 0.9);
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .navbar a:hover {
+            background: #FF5722;
+            color: #fff;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #FF5722;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .back-to-top:hover {
+            background-color: #FF8A50;
+        }
+
+        /* Responsive Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-item {
+            background-color: #282828;
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes expand {
+            from { width: 0; }
+            to { width: 80px; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px 0;
+            background-color: #1E1E1E;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .footer a {
+            margin: 0 10px;
+            color: #FF5722;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #FF8A50;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to Malforge Group</h1>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="#learn-more">Learn More</a>
+        <a href="#why-choose-us">Why Choose Us</a>
+        <a href="#whats-next">What’s Next</a>
+    </div>
+
+    <!-- Main Content -->
+    <div id="learn-more" class="container">
+        <h1>Learn More About Malforge Group</h1>
+        <p>Welcome to Malforge Group, your ultimate resource for mastering the art and science of malware development. Whether you're a beginner looking to understand the fundamentals or an experienced developer aiming to refine your skills, we have something for you. Our platform is dedicated to providing comprehensive, in-depth content on a wide range of topics related to malware creation and cybersecurity.</p>
+        
+        <h2>What We Offer</h2>
+        <p>At Malforge Group, we pride ourselves on delivering high-quality, detailed blogs that delve into the intricacies of malware development. Here’s what you can expect:</p>
+
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Comprehensive Guides</h3>
+                <p>Our blogs cover everything from the basics of malware development to advanced techniques. Whether you're interested in how a particular method works or how to implement it in code, we've got you covered.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Step-by-Step Tutorials</h3>
+                <p>We break down complex concepts into easy-to-follow steps, complete with detailed explanations, code snippets, and visual aids. Learn how to implement various techniques and understand the theory behind them.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Practical Examples</h3>
+                <p>Each blog is packed with practical examples that you can experiment with. We provide real-world scenarios to help you understand how these techniques are applied in the wild.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Future Developments</h3>
+                <p>In the near future, we plan to offer detailed tutorials on building sophisticated malware, backdoors, Command and Control (C2) systems, and more—completely from scratch.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Parallax Section -->
+    <div class="parallax"></div>
+
+    <!-- Why Choose Us Section -->
+    <div id="why-choose-us" class="container">
+        <h2>Why Choose Us?</h2>
+        <p>Malforge Group is more than just a collection of blogs. We are a community of like-minded individuals passionate about the art of malware development. Here’s why our platform stands out:</p>
+
+        <ul>
+            <li><strong>Expert Knowledge:</strong> Our content is crafted by professionals with deep knowledge and experience in malware analysis and development. You’re learning from the best in the field.</li>
+            <li><strong>Detailed Explanations:</strong> We don’t just show you the “how”; we explain the “why” behind every technique. This ensures you gain a deeper understanding of the material, making you a more skilled developer.</li>
+            <li><strong>Cutting-Edge Content:</strong> Cybersecurity is an ever-evolving field. We stay updated with the latest trends and techniques, ensuring that our content is always relevant and up-to-date.</li>
+            <li><strong>Community Support:</strong> Engage with a community of fellow learners and experts. Share ideas, ask questions, and collaborate on projects—Malforge Group is a place where knowledge grows through interaction.</li>
+        </ul>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+        ↑ Back to Top
+    </div>
+
+    <!-- What's Next Section -->
+    <div id="whats-next" class="container">
+        <h2>What’s Next?</h2>
+        <p>We’re constantly expanding our content library, so there’s always something new to learn. Stay tuned for upcoming series on malware construction, including the creation of backdoors and C2 systems, and more advanced topics. Whether you’re looking to build a solid foundation or enhance your existing skills, Malforge Group is your go-to resource.</p>
+
+        <p>Explore our blogs, start learning, and take your malware development skills to the next level with Malforge Group.</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2024 Malforge Group | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+
+    <script>
+        // Show Back to Top Button on Scroll
+        window.onscroll = function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (document.documentElement.scrollTop > 200) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>
